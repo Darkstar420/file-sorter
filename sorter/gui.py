@@ -1,4 +1,4 @@
-# codex-task: Implement the Qt main window exactly as described in codex-plan.md
+# codex-task: Add a folder picker button next to each destination column in the rules table
 
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
