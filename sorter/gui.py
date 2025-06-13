@@ -44,7 +44,10 @@ class FileSorterMainWindow(QMainWindow):
         run_btn = QPushButton("Run Once")
         monitor_btn = QPushButton("Enable Monitor")
 
-        # For now these buttons do nothing — we'll wire them up later
+        # Connect buttons to their actions
+        add_rule_btn.clicked.connect(self.add_rule)
+        # remove_rule_btn and other actions will be wired up later
+
         button_layout.addWidget(add_rule_btn)
         button_layout.addWidget(remove_rule_btn)
         button_layout.addStretch()
@@ -68,6 +71,13 @@ class FileSorterMainWindow(QMainWindow):
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
         if folder:
             self.source_input.setText(folder)
+
+    def add_rule(self):
+        """Insert a new row into the rules table with placeholder values."""
+        row_position = self.rules_table.rowCount()
+        self.rules_table.insertRow(row_position)
+        self.rules_table.setItem(row_position, 0, QTableWidgetItem("*.ext"))
+        self.rules_table.setItem(row_position, 1, QTableWidgetItem("D:/Path"))
 
 
 if __name__ == "__main__":
